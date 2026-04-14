@@ -3,8 +3,14 @@ import { Social } from '../social/social';
 
 @Component({
   selector: 'app-contact',
-  imports: [],
+  imports: [Social],
   templateUrl: './contact.html',
   styleUrl: './contact.scss',
 })
-export class Contact {}
+export class Contact {
+  title:string = "Del is here!";
+
+  test = (10 > 2) ? "yes" : "no";
+
+  truthnuke = "thebestever";
+}

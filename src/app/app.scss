@@ -1,10 +1,19 @@
-.active{
+ul {
+    list-style-type: none;
+    color: sienna;
+
+    li {
+        padding: 10px;
+        margin: 5px;
+    }
+}
+
+.active {
     font-weight: bold;
     color: rgb(219, 171, 15);
 }
 
-footer{
+footer {
     height: 250px;
     background-color: rgb(82, 60, 13);
 }
-
