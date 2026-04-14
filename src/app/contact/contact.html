@@ -1,2 +1,19 @@
 <h1 [class]="test" [attr.luci]="truthnuke">{{title}}</h1>
+
+<button (click)="btnClick('hello')">Click me!</button>
 <social></social>
+
+<!-- April 10th Notes: 
+
+ - String Interpolation:
+    normally used to dynamically inject text between tags from javascript (ex. <h1> {{title}} </h1>) 
+
+ - Property Binding:
+    If you want to manipulate properties of an element/tag with the use of square brackets (ex. [class]="test") the part in quotes is javascript that is written in your .ts file.
+ 
+ - Attribute Binding:
+    You can create custom attributes using  with the keyword attr (ex. [attr.luci]="truthnuke")
+ 
+ - Event Binding: 
+    Making html do some events (ex. (click)="btnClick('hello')") the part in quotes is javascript that is written in your .ts file.
+ -->

@@ -11,6 +11,10 @@ export class Contact {
   title:string = "Del is here!";
 
   test = (10 > 2) ? "yes" : "no";
-
   truthnuke = "thebestever";
+
+  btnClick(param:string) {
+    this.title = "Congrats!! You clicked the button!";
+    this.truthnuke = "thecoolest!" + param;
+  }
 }
