@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row">
+
+        @for(product of products; track product.id){
+        <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="productsContainer">
+                <a [routerLink]="['/dummyproducts', product.id, convertTitle(product.title) ]">
+                    <img [src]="product.thumbnail" class="pThumbnail" [alt]="product.title">
+                    <h2>{{ product.title }}</h2>
+                </a>
+                <p class="price">{{ product.price | currency:'CAD'}}</p>
+                <p class="rating">{{ product.rating }}/5</p>
+                <button class="btn btn-warning">Add to Cart</button>
+            </div>
+        </div>
+        }
+    </div>
+</div>
