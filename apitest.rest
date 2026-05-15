@@ -1,0 +1,7 @@
+@url=https://dummyjson.com
+
+GET {{url}}/products
+
+###
+
+DELETE {{url}}/products/1

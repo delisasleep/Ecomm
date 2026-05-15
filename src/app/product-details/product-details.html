@@ -1,4 +1,6 @@
-<img [src]="{{product.images[0]}}" alt="{{ product.title }}">
-<h1>{{ product.title }}</h1>
-<p>{{ product.description }}</p>
-<p>Price: {{ product.price | currency:'CAD' }}</p>
+<ng-container *ngIf="product() as productItem">
+  <img [src]="productItem.images?.[0]" alt="{{ productItem.title }}">
+  <h1>{{ productItem.title }}</h1>
+  <p>{{ productItem.description }}</p>
+  <p>Price: {{ productItem.price | currency:'CAD' }}</p>
+</ng-container>

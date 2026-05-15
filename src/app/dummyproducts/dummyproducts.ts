@@ -3,14 +3,13 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Dummyproduct, DummyproductItem } from '../interfaces/dummyproduct';
 import { CurrencyPipe } from '@angular/common';
 import { RouterLink } from "@angular/router";
-import { text } from 'stream/consumers';
-
 
 @Component({
   selector: 'app-dummyproducts',
+  standalone: true,
   imports: [CurrencyPipe, RouterLink],
   templateUrl: './dummyproducts.html',
-  styleUrl: './dummyproducts.scss',
+  styleUrls: ['./dummyproducts.scss'],
 })
 export class Dummyproducts implements OnInit {
   products: DummyproductItem[] = [];
@@ -28,19 +27,22 @@ export class Dummyproducts implements OnInit {
       this.changeDetect.detectChanges();
     });
 
-    
+
   }
 
-  convertTitle(title:string){
-      const urlFriendly = decodeURIComponent(title)
-.trim()
-.replace(/[^a-zA-Z0-9\s-]/g, "") // remove special characters
-.replace(/\s+/g, "-") // replace spaces with dashes
-.replace(/-+/g, "-") // remove duplicate dashes
-.replace(/^-|-$/g, "") // remove starting/ending dashes
-.toLowerCase();
+    deleteProduct(id:number){
 
-return urlFriendly;
+    }
+  convertTitle(title: string) {
+    const urlFriendly = decodeURIComponent(title)
+      .trim()
+      .replace(/[^a-zA-Z0-9\s-]/g, "") // remove special characters
+      .replace(/\s+/g, "-") // replace spaces with dashes
+      .replace(/-+/g, "-") // remove duplicate dashes
+      .replace(/^-|-$/g, "") // remove starting/ending dashes
+      .toLowerCase();
+
+    return urlFriendly;
   }
 
 }

@@ -15,5 +15,7 @@ export interface DummyproductItem {
     "rating": number,
     "stock": number,
     "images": string[],
-    "thumbnail": string
+    "thumbnail": string,
+    "isDeleted"?: boolean,
+    "deletedOn"?: string
 }

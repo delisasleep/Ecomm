@@ -1,28 +1,33 @@
 import { HttpClient } from '@angular/common/http';
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DummyproductItem } from '../interfaces/dummyproduct';
-import { CurrencyPipe } from '@angular/common';
+import { CommonModule, CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-product-details',
-  imports: [CurrencyPipe],
+  standalone: true,
+  imports: [CurrencyPipe, CommonModule],
   templateUrl: './product-details.html',
-  styleUrl: './product-details.scss',
+  styleUrls: ['./product-details.scss'],
 })
-export class ProductDetails implements OnInit{
+export class ProductDetails implements OnInit {
+  protected readonly product = signal<DummyproductItem | null>(null);
+  private readonly productURL = 'https://dummyjson.com/products';
 
-  productURL: string = "https://dummyjson.com/products/"
-  product: DummyproductItem = {} as DummyproductItem;
-  constructor(private route: ActivatedRoute, private http: HttpClient, private changeDetect: ChangeDetectorRef) { }
+  constructor(
+    private readonly route: ActivatedRoute,
+    private readonly http: HttpClient,
+    private readonly changeDetect: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
-      let id = this.route.snapshot.paramMap.get("productID");
-      console.log(id);
-      this.http.get<DummyproductItem>(this.productURL + "/" + id).subscribe ( res => {
-        console.log(res);
+    const id = this.route.snapshot.paramMap.get('productID');
+    if (id) {
+      this.http.get<DummyproductItem>(`${this.productURL}/${id}`).subscribe((res) => {
+        this.product.set(res);
         this.changeDetect.detectChanges();
-        this.product = res;
       });
+    }
   }
 }
